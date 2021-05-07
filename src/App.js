@@ -10,31 +10,21 @@ import File from './file'
 import './App.css';
 
 function App() {
-  const [connected, setconnected] = useState(false)
+  const [connected] = useState(true)
   const [messages, setmessages] = useState([])
-  const [user, setUser] = useState(null)
+  const [user] = useState(shortid.generate())
   const [msg, setMsg] = useState(null)
-  const [client, setClient] = useState(null)
+  const [client] = useState(W3CWebSocket('wss://fj4q35htag.execute-api.eu-west-2.amazonaws.com/Prod'))
   const [filename, setfilename] = useState(null)
-  const getConnection = () => {
-    setconnected(true)
-    return W3CWebSocket('wss://fj4q35htag.execute-api.eu-west-2.amazonaws.com/Prod');
-  }
-  const mount = () => {
-    setUser(shortid.generate())
-    var client = getConnection()
-    setClient(client)
+
+  useEffect(() => {
     client.onmessage = (message) => {
       var msgState = messages
       var json = JSON.parse(message.data)
       msgState.push({ text: json.text, user: json.user })
       setmessages([...msgState])
     };
-  }
-
-  useEffect(() => {
-    mount();
-  }, [])
+  }, [client, messages])
 
   const sendMessage = async () => {
 
