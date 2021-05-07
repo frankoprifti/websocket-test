@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.me {
+  color: red;
+}
+.somebody {
+  color: blue;
+}
+.file-wrap {
+  width: 150px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  margin-right: 8px;
+}
+.files {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.icon {
+  width: 70px;
+  height: 190px;
+}
+.filename {
+  width: 70%;
+  word-wrap: normal;
+  text-align: center;
+}
+.my-file {
+  border: 1px solid orange;
+  border-radius: 8px;
+  transition: all 300ms;
+  cursor: pointer;
+}
+.nope {
+  border: 1px solid rgb(0, 247, 255);
+  border-radius: 8px;
+  transition: all 300ms;
+  cursor: pointer;
+}
+.my-file:hover {
+  background-color: rgb(255, 211, 130);
+}
+
+.nope:hover {
+  background-color: rgb(130, 255, 224);
+}
