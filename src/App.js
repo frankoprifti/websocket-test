@@ -18,11 +18,9 @@ function App() {
   const [filename, setfilename] = useState(null)
   const getConnection = () => {
     setconnected(true)
-    return W3CWebSocket('wss://fj4q35htag.execute-api.eu-west-2.amazonaws.com/Prod'); setconnected(true)
+    return W3CWebSocket('wss://fj4q35htag.execute-api.eu-west-2.amazonaws.com/Prod');
   }
-
-
-  useEffect(() => {
+  const mount = () => {
     setUser(shortid.generate())
     var client = getConnection()
     setClient(client)
@@ -32,7 +30,12 @@ function App() {
       msgState.push({ text: json.text, user: json.user })
       setmessages([...msgState])
     };
+  }
+
+  useEffect(() => {
+    mount();
   }, [])
+
   const sendMessage = async () => {
 
     waitForSocketConnection(client, function () {
